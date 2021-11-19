@@ -1,0 +1,2 @@
+C:\Users\Zver\Desktop\Программы С++\Парковка для машин\Парковка_гит\Parking\car\Debug\car.exe
+C:\Users\Zver\Desktop\Программы С++\Парковка для машин\Парковка_гит\Parking\car\Debug\car.pdb

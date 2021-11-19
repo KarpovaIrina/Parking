@@ -14,7 +14,7 @@ class Cars
 private:
     int i = 0, i2 = 0;
     bool move = false, flag = false, f = false;
-    string about = "Ничего", title = "Ничего";
+    string about = "Ничего", title = "Ничего", coloring = "Ничего";
 
 public:
     bool existence()
@@ -30,6 +30,7 @@ public:
     {
         about = "Ничего";
         title = "Ничего";
+        coloring = "Ничего";
         move = false;
         f = false;
     }
@@ -131,6 +132,13 @@ public:
         else about = text;
     }
 
+    void color()
+    {
+        if (act == 5)
+            cout << "Цвет - " << coloring << "\n" << endl;
+        else coloring = text;
+    }
+
     void exit()
     {
         if (move)
@@ -173,24 +181,32 @@ int main()
     car[c - 1].name();
     text = "Выглядит круто\nЯрко-красный цвет отражает свет фонарей парковки";
     car[c - 1].description();
+    text = "Красный";
+    car[c - 1].color();
 
     c++;
     text = "Серый внедорожник";
     car[c - 1].name();
     text = "Выглядит мощно\nСерый внедорожник неплохо проедет по русским дорогам";
     car[c - 1].description();
+    text = "Серый";
+    car[c - 1].color();
 
     c++;
     text = "Жёлтая гоночная машина";
     car[c - 1].name();
     text = "Выглядит богато\nЖёлтый гоночный автомобиль вызвает зависть у прохожих";
     car[c - 1].description();
-    c++;
+    text = "Жёлтый";
+    car[c - 1].color();
 
+    c++;
     text = "Какая-то развалюха";
     car[c - 1].name();
     text = "Выглядит печально\nЭта машина разваливается на глазах";
     car[c - 1].description();
+    text = "Неизвестно";
+    car[c - 1].color();
 
     while (end != 2)
     {
@@ -262,14 +278,17 @@ int main()
 
                             cout << "\nВведите название машины: ";
                             cin.ignore(32767, '\n'); // удаление символа новой строки из входного потока данных
-                            getline(cin, text);
 
+                            getline(cin, text);
                             car[c - 1].name();
 
                             cout << "Введите описание машины: ";
                             getline(cin, text);
-
                             car[c - 1].description();
+
+                            cout << "Введите цвет машины: ";
+                            getline(cin, text);
+                            car[c - 1].color();
                         }
                         //Если место занято
                         else
@@ -316,7 +335,7 @@ int main()
             e = car[c - 1].existence();
 
             // Если машина существует
-            if ((e) || ((c > 0) && (c <= size)))
+            if ((e) && ((c > 0) && (c <= size)))
             {
                 cout << "\nВы в машине:";
                 cout << "\n  1 - О машине" << endl;
@@ -324,7 +343,7 @@ int main()
                 cout << "  3 - Движение" << endl;
                 cout << "  4 - Выйти" << endl;
                 cout << "Дополнительные действия:" << endl;
-                cout << "  5 - " << endl;
+                cout << "  5 - Цвет" << endl;
                 cout << "  6 - " << endl;
 
                 while (act != 4)
@@ -354,7 +373,7 @@ int main()
                             car[c - 1].exit();
                             break;
                         case (5):
-                            //Действие 5
+                            car[c - 1].color();
                             break;
                         case (6):
                             //Действие 6
